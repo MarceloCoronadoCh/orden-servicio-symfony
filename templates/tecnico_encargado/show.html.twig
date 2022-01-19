@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TecnicoEncargado{% endblock %}
+
+{% block body %}
+    <h1>TecnicoEncargado</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tecnico_encargado.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ tecnico_encargado.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellido</th>
+                <td>{{ tecnico_encargado.apellido }}</td>
+            </tr>
+            <tr>
+                <th>Dni</th>
+                <td>{{ tecnico_encargado.dni }}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ tecnico_encargado.direccion }}</td>
+            </tr>
+            <tr>
+                <th>Codigo</th>
+                <td>{{ tecnico_encargado.codigo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('tecnico_encargado_index') }}">back to list</a>
+
+    <a href="{{ path('tecnico_encargado_edit', {'id': tecnico_encargado.id}) }}">edit</a>
+
+    {{ include('tecnico_encargado/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EquipoMarca index{% endblock %}
+
+{% block body %}
+    <h1>EquipoMarca index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NombreMarca</th>
+                <th>Detalle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for equipo_marca in equipo_marcas %}
+            <tr>
+                <td>{{ equipo_marca.id }}</td>
+                <td>{{ equipo_marca.nombreMarca }}</td>
+                <td>{{ equipo_marca.detalle }}</td>
+                <td>
+                    <a href="{{ path('equipo_marca_show', {'id': equipo_marca.id}) }}">show</a>
+                    <a href="{{ path('equipo_marca_edit', {'id': equipo_marca.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('equipo_marca_new') }}">Create new</a>
+{% endblock %}
