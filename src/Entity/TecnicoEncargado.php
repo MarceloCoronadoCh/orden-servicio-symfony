@@ -92,4 +92,9 @@ class TecnicoEncargado
 
         return $this;
     }
+
+    public function __toString(): string{
+
+        return $this ->getNombre().' '.$this ->getApellido();
+    }
 }

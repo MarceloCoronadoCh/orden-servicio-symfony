@@ -106,5 +106,11 @@ class Cliente
         $this->telefono = $telefono;
 
         return $this;
-    }   
+    }  
+    
+    public function __toString(): string{
+
+        return $this ->getNombre().' '.$this ->getApellido();
+    }
 }
+ 
