@@ -19,6 +19,10 @@ class TipoServicio
     #[ORM\Column(type: 'text', nullable: true)]
     private $detalleServicio;
 
+    #[ORM\ManyToOne(targetEntity: DetalleOrden::class, inversedBy: 'tipoServicioDetalleOrden')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $tipoServicioDetalleOrden;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +48,18 @@ class TipoServicio
     public function setDetalleServicio(?string $detalleServicio): self
     {
         $this->detalleServicio = $detalleServicio;
+
+        return $this;
+    }
+
+    public function getTipoServicioDetalleOrden(): ?DetalleOrden
+    {
+        return $this->tipoServicioDetalleOrden;
+    }
+
+    public function setTipoServicioDetalleOrden(?DetalleOrden $tipoServicioDetalleOrden): self
+    {
+        $this->tipoServicioDetalleOrden = $tipoServicioDetalleOrden;
 
         return $this;
     }

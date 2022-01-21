@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OrdenServicio{% endblock %}
+
+{% block body %}
+    <h1>OrdenServicio</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ orden_servicio.id }}</td>
+            </tr>
+            <tr>
+                <th>FechaOrden</th>
+                <td>{{ orden_servicio.fechaOrden ? orden_servicio.fechaOrden|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>NumeroOrden</th>
+                <td>{{ orden_servicio.numeroOrden }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('orden_servicio_index') }}">back to list</a>
+
+    <a href="{{ path('orden_servicio_edit', {'id': orden_servicio.id}) }}">edit</a>
+
+    {{ include('orden_servicio/_delete_form.html.twig') }}
+{% endblock %}

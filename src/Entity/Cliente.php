@@ -106,5 +106,5 @@ class Cliente
         $this->telefono = $telefono;
 
         return $this;
-    }
+    }   
 }
