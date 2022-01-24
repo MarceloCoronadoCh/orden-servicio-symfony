@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\DetalleOrden;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,12 +13,12 @@ class DetalleOrdenType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            
-            ->add('observacion')
-            ->add('equipoDetalleOrden')
             ->add('tipoServicioDetalleOrden')
-            ->add('ordenServicio')
-            ->add('estadoDetalleOrden')
+            ->add('precio')
+            ->add('observacion', TextareaType::class, [
+                'required' => false,
+                'attr' => ['rows' => 3],
+            ])
         ;
     }
 

@@ -11,13 +11,10 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src = "{{ asset('js/colecion.js') }}"></script>
+    <script src = "{{ asset('js/collection.js') }}"></script>
     <script>
         jQuery(document).ready(function (){
-             Collection.int(#'')
-
+             Collection.init('#orden_servicio_detalles')
         });
-
-
     </script>
 {% endblock %}

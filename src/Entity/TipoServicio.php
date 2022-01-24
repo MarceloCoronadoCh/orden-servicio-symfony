@@ -13,15 +13,11 @@ class TipoServicio
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 50)]
+    #[ORM\Column(type: 'string', length: 100)]
     private $nombreServicio;
 
-    #[ORM\Column(type: 'text', nullable: true)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $detalleServicio;
-
-    #[ORM\ManyToOne(targetEntity: DetalleOrden::class, inversedBy: 'tipoServicioDetalleOrden')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $tipoServicioDetalleOrden;
 
     public function getId(): ?int
     {
@@ -52,20 +48,8 @@ class TipoServicio
         return $this;
     }
 
-    public function getTipoServicioDetalleOrden(): ?DetalleOrden
+    public function __toString(): string
     {
-        return $this->tipoServicioDetalleOrden;
-    }
-
-    public function setTipoServicioDetalleOrden(?DetalleOrden $tipoServicioDetalleOrden): self
-    {
-        $this->tipoServicioDetalleOrden = $tipoServicioDetalleOrden;
-
-        return $this;
-    }
-
-    public function __toString(): string{
-
-        return $this ->getNombreServicio();
+        return $this->getNombreServicio();
     }
 }

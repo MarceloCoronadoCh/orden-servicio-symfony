@@ -12,8 +12,8 @@ class TecnicoEncargadoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nombre')
-            ->add('apellido')
+            ->add('nombreTecnico')
+            ->add('apellidosTecnico')
             ->add('dni')
             ->add('direccion')
         ;

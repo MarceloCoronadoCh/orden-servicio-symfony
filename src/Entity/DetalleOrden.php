@@ -15,69 +15,140 @@ class DetalleOrden
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\ManyToOne(targetEntity: Equipo::class)]
-    #[ORM\JoinColumn(nullable: false)]
-    private $equipoDetalleOrden;
+//    #[ORM\ManyToOne(targetEntity: Equipo::class)]
+//    #[ORM\JoinColumn(nullable: false)]
+//    private $equipoDetalleOrden;
+//
+//    #[ORM\ManyToOne(targetEntity: TipoServicio::class)]
+//    #[ORM\JoinColumn(nullable: false)]
+//    private $tipoServicioDetalleOrden;
+//
+//    #[ORM\Column(type: 'text', nullable: true)]
+//    private $observacion;
+//
+//    #[ORM\ManyToOne(targetEntity: OrdenServicio::class, inversedBy: 'ordenServicio')]
+//    #[ORM\JoinColumn(nullable: false)]
+//    private $ordenServicio;
+//
+//    #[ORM\ManyToMany(targetEntity: Estado::class)]
+//    private $estadoDetalleOrden;
+//
+//    public function __construct()
+//    {
+//        $this->estadoDetalleOrden = new ArrayCollection();
+//    }
+//
+//    public function getId(): ?int
+//    {
+//        return $this->id;
+//    }
+//
+//    public function getEquipoDetalleOrden(): ?Equipo
+//    {
+//        return $this->equipoDetalleOrden;
+//    }
+//
+//    public function setEquipoDetalleOrden(?Equipo $equipoDetalleOrden): self
+//    {
+//        $this->equipoDetalleOrden = $equipoDetalleOrden;
+//
+//        return $this;
+//    }
+//
+//    public function getTipoServicioDetalleOrden(): ?TipoServicio
+//    {
+//        return $this->tipoServicioDetalleOrden;
+//    }
+//
+//    public function setTipoServicioDetalleOrden(?TipoServicio $tipoServicioDetalleOrden): self
+//    {
+//        $this->tipoServicioDetalleOrden = $tipoServicioDetalleOrden;
+//
+//        return $this;
+//    }
+//
+//    public function getFechaEntrega(): ?\DateTimeInterface
+//    {
+//        return $this->fechaEntrega;
+//    }
+//
+//    public function setFechaEntrega(\DateTimeInterface $fechaEntrega): self
+//    {
+//        $this->fechaEntrega = $fechaEntrega;
+//
+//        return $this;
+//    }
+//
+//    public function getObservacion(): ?string
+//    {
+//        return $this->observacion;
+//    }
+//
+//    public function setObservacion(?string $observacion): self
+//    {
+//        $this->observacion = $observacion;
+//
+//        return $this;
+//    }
+//
+//    public function getOrdenServicio(): ?OrdenServicio
+//    {
+//        return $this->ordenServicio;
+//    }
+//
+//    public function setOrdenServicio(?OrdenServicio $ordenServicio): self
+//    {
+//        $this->ordenServicio = $ordenServicio;
+//
+//        return $this;
+//    }
+//
+//    public function __toString(): string{
+//
+//        return $this ->getOrdenServicio();
+//    }
+//
+//    /**
+//     * @return Collection|Estado[]
+//     */
+//    public function getEstadoDetalleOrden(): Collection
+//    {
+//        return $this->estadoDetalleOrden;
+//    }
+//
+//    public function addEstadoDetalleOrden(Estado $estadoDetalleOrden): self
+//    {
+//        if (!$this->estadoDetalleOrden->contains($estadoDetalleOrden)) {
+//            $this->estadoDetalleOrden[] = $estadoDetalleOrden;
+//        }
+//
+//        return $this;
+//    }
+//
+//    public function removeEstadoDetalleOrden(Estado $estadoDetalleOrden): self
+//    {
+//        $this->estadoDetalleOrden->removeElement($estadoDetalleOrden);
+//
+//        return $this;
+//    }
+//}
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $observacion;
 
     #[ORM\ManyToOne(targetEntity: TipoServicio::class)]
     #[ORM\JoinColumn(nullable: false)]
     private $tipoServicioDetalleOrden;
 
-
-    #[ORM\Column(type: 'text', nullable: true)]
-    private $observacion;
-
-    #[ORM\ManyToOne(targetEntity: OrdenServicio::class, inversedBy: 'ordenServicio')]
+    #[ORM\ManyToOne(targetEntity: OrdenServicio::class, inversedBy: 'detalles')]
     #[ORM\JoinColumn(nullable: false)]
     private $ordenServicio;
 
-    #[ORM\ManyToMany(targetEntity: Estado::class)]
-    private $estadoDetalleOrden;
-
-    public function __construct()
-    {
-        $this->estadoDetalleOrden = new ArrayCollection();
-    }
+    #[ORM\Column(type: 'decimal', precision: 10, scale: 2, nullable: true)]
+    private $precio;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getEquipoDetalleOrden(): ?Equipo
-    {
-        return $this->equipoDetalleOrden;
-    }
-
-    public function setEquipoDetalleOrden(?Equipo $equipoDetalleOrden): self
-    {
-        $this->equipoDetalleOrden = $equipoDetalleOrden;
-
-        return $this;
-    }
-
-    public function getTipoServicioDetalleOrden(): ?TipoServicio
-    {
-        return $this->tipoServicioDetalleOrden;
-    }
-
-    public function setTipoServicioDetalleOrden(?TipoServicio $tipoServicioDetalleOrden): self
-    {
-        $this->tipoServicioDetalleOrden = $tipoServicioDetalleOrden;
-
-        return $this;
-    }
-
-    public function getFechaEntrega(): ?\DateTimeInterface
-    {
-        return $this->fechaEntrega;
-    }
-
-    public function setFechaEntrega(\DateTimeInterface $fechaEntrega): self
-    {
-        $this->fechaEntrega = $fechaEntrega;
-
-        return $this;
     }
 
     public function getObservacion(): ?string
@@ -92,44 +163,43 @@ class DetalleOrden
         return $this;
     }
 
-    public function getOrdenServicio(): ?OrdenServicio
+    public function getTipoServicioDetalleOrden(): ?TipoServicio
+    {
+        return $this->tipoServicioDetalleOrden;
+    }
+
+    public function setTipoServicioDetalleOrden(?TipoServicio $tipoServicio_DetalleOrden): self
+    {
+        $this->tipoServicioDetalleOrden = $tipoServicio_DetalleOrden;
+
+        return $this;
+    }
+
+    public function getOrdenServicio(): ?OrdenDeServicio
     {
         return $this->ordenServicio;
     }
 
-    public function setOrdenServicio(?OrdenServicio $ordenServicio): self
+    public function setOrdenServicio(?OrdenDeServicio $ordenServicio): self
     {
         $this->ordenServicio = $ordenServicio;
 
         return $this;
     }
 
-    public function __toString(): string{
-
-        return $this ->getOrdenServicio();
+    public function getPrecio(): ?string
+    {
+        return $this->precio;
     }
 
-    /**
-     * @return Collection|Estado[]
-     */
-    public function getEstadoDetalleOrden(): Collection
+    public function setPrecio(?string $precio): self
     {
-        return $this->estadoDetalleOrden;
-    }
-
-    public function addEstadoDetalleOrden(Estado $estadoDetalleOrden): self
-    {
-        if (!$this->estadoDetalleOrden->contains($estadoDetalleOrden)) {
-            $this->estadoDetalleOrden[] = $estadoDetalleOrden;
-        }
+        $this->precio = $precio;
 
         return $this;
     }
-
-    public function removeEstadoDetalleOrden(Estado $estadoDetalleOrden): self
+    public function __toString(): string
     {
-        $this->estadoDetalleOrden->removeElement($estadoDetalleOrden);
-
-        return $this;
+        return $this->getOrdenServicio();
     }
 }

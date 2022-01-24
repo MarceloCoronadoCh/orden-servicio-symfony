@@ -16,19 +16,16 @@ class Cliente
     #[ORM\Column(type: 'string', length: 50)]
     private $nombre;
 
-    #[ORM\Column(type: 'string', length: 50)]
-    private $apellido;
+    #[ORM\Column(type: 'string', length: 100)]
+    private $apellidos;
 
-    #[ORM\Column(type: 'string', length: 50, nullable: true)]
-    private $razonSocial;
-
-    #[ORM\Column(type: 'string', length: 11, nullable: true)]
+    #[ORM\Column(type: 'string', length: 11)]
     private $ruc;
 
-    #[ORM\Column(type: 'string', length: 50, nullable: true)]
+    #[ORM\Column(type: 'string', length: 100)]
     private $direccion;
 
-    #[ORM\Column(type: 'string', length: 9, nullable: true)]
+    #[ORM\Column(type: 'string', length: 12)]
     private $telefono;
 
     public function getId(): ?int
@@ -48,26 +45,14 @@ class Cliente
         return $this;
     }
 
-    public function getApellido(): ?string
+    public function getApellidos(): ?string
     {
-        return $this->apellido;
+        return $this->apellidos;
     }
 
-    public function setApellido(string $apellido): self
+    public function setApellidos(string $apellidos): self
     {
-        $this->apellido = $apellido;
-
-        return $this;
-    }
-
-    public function getRazonSocial(): ?string
-    {
-        return $this->razonSocial;
-    }
-
-    public function setRazonSocial(?string $razonSocial): self
-    {
-        $this->razonSocial = $razonSocial;
+        $this->apellidos = $apellidos;
 
         return $this;
     }
@@ -77,7 +62,7 @@ class Cliente
         return $this->ruc;
     }
 
-    public function setRuc(?string $ruc): self
+    public function setRuc(string $ruc): self
     {
         $this->ruc = $ruc;
 
@@ -89,7 +74,7 @@ class Cliente
         return $this->direccion;
     }
 
-    public function setDireccion(?string $direccion): self
+    public function setDireccion(string $direccion): self
     {
         $this->direccion = $direccion;
 
@@ -101,21 +86,22 @@ class Cliente
         return $this->telefono;
     }
 
-    public function setTelefono(?string $telefono): self
+    public function setTelefono(string $telefono): self
     {
         $this->telefono = $telefono;
 
         return $this;
-    }  
-    
-    public function __toString(): string{
-
-        return $this ->getNombre().' '.$this ->getApellido();
     }
 
-    public function rucNombreApellidos():string{
+    public function rucAndNombreApellidos(): string
+    {
+        return $this->getRuc().' - '.$this->getNombre().' '.$this->getApellidos();
+    }
 
-        return $this ->getRuc().'-'.$this ->getNombre().' '.$this ->getApellido();
+    public function __toString(): string
+    {
+        return $this->getNombre().' '.$this->getApellidos();
     }
 }
+
  

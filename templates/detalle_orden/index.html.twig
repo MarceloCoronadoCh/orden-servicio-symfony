@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for detalle_orden in detalle_ordens %}
+        {% for detalleOrden in detalle_ordens %}
             <tr>
                 <td>{{ detalle_orden.id }}</td>
                 <td>{{ detalle_orden.fechaIngreso ? detalle_orden.fechaIngreso|date('Y-m-d H:i:s') : '' }}</td>

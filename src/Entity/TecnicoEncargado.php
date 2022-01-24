@@ -14,15 +14,15 @@ class TecnicoEncargado
     private $id;
 
     #[ORM\Column(type: 'string', length: 50)]
-    private $nombre;
+    private $nombreTecnico;
 
-    #[ORM\Column(type: 'string', length: 50)]
-    private $apellido;
+    #[ORM\Column(type: 'string', length: 100)]
+    private $apellidosTecnico;
 
     #[ORM\Column(type: 'string', length: 8)]
     private $dni;
 
-    #[ORM\Column(type: 'string', length: 50, nullable: true)]
+    #[ORM\Column(type: 'string', length: 100, nullable: true)]
     private $direccion;
 
     public function getId(): ?int
@@ -30,26 +30,26 @@ class TecnicoEncargado
         return $this->id;
     }
 
-    public function getNombre(): ?string
+    public function getNombreTecnico(): ?string
     {
-        return $this->nombre;
+        return $this->nombreTecnico;
     }
 
-    public function setNombre(string $nombre): self
+    public function setNombreTecnico(string $nombreTecnico): self
     {
-        $this->nombre = $nombre;
+        $this->nombreTecnico = $nombreTecnico;
 
         return $this;
     }
 
-    public function getApellido(): ?string
+    public function getApellidosTecnico(): ?string
     {
-        return $this->apellido;
+        return $this->apellidosTecnico;
     }
 
-    public function setApellido(string $apellido): self
+    public function setApellidosTecnico(string $apellidosTecnico): self
     {
-        $this->apellido = $apellido;
+        $this->apellidosTecnico = $apellidosTecnico;
 
         return $this;
     }
@@ -78,8 +78,8 @@ class TecnicoEncargado
         return $this;
     }
 
-    public function __toString(): string{
-
-        return $this ->getNombre().' '.$this ->getApellido();
+    public function __toString(): string
+    {
+        return $this->getNombreTecnico().' '.$this->getApellidosTecnico();
     }
 }

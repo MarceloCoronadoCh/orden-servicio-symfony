@@ -11,13 +11,13 @@ class EquipoMarca
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private ?int $id;
+    private $id;
 
     #[ORM\Column(type: 'string', length: 50)]
     private $nombreMarca;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private $detalle;
+    private $detalleMarca;
 
     public function getId(): ?int
     {
@@ -36,21 +36,20 @@ class EquipoMarca
         return $this;
     }
 
-    public function getDetalle(): ?string
+    public function getDetalleMarca(): ?string
     {
-        return $this->detalle;
+        return $this->detalleMarca;
     }
 
-    public function setDetalle(?string $detalle): self
+    public function setDetalleMarca(?string $detalleMarca): self
     {
-        $this->detalle = $detalle;
+        $this->detalleMarca = $detalleMarca;
 
         return $this;
     }
-    
-    public function __toString(): string{
 
-        return $this ->getNombreMarca();
-
+    public function __toString()
+    {
+        return $this->getNombreMarca();
     }
-} 
+}

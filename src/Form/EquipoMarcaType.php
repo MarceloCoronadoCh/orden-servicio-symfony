@@ -17,7 +17,7 @@ class EquipoMarcaType extends AbstractType
                 'label' => 'Nombre',
                 'attr'=> ['placeholder' => 'Ingrese un Nombre']
             ])
-            ->add('detalle', TextType::class,[
+            ->add('detalleMarca', TextType::class,[
                 'required'=>false,
                 'label'=>'Detalle',
                 'attr'=> ['placeholder' => 'Ingrese un Detalle']

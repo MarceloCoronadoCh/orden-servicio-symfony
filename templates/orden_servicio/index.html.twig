@@ -7,19 +7,36 @@
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>FechaOrden</th>
-                <th>NumeroOrden</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Fecha Ingreso</th>
+            <th>Fecha Salida</th>
+            <th>Numero</th>
+            <th>Cliente</th>
+            <th>Equipo</th>
+            <th>Estado</th>
+            <th>Precio</th>
+            <th>actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for orden_servicio in orden_servicios %}
             <tr>
-                <td>{{ orden_servicio.id }}</td>
-                <td>{{ orden_servicio.fechaOrden ? orden_servicio.fechaOrden|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ orden_servicio.fechaIngreso | date('d-m-Y') }}</td>
+                <td>
+                    {% if orden_servicio.fechaSalida %}
+                        {{ orden_servicio.fechaSalida | date('d-m-Y') }}
+                    {% endif %}
+                </td>
                 <td>{{ orden_servicio.numeroOrden }}</td>
+                <td>{{ orden_servicio.clienteOrden }}</td>
+                <td>{{ orden_servicio.equipo }}</td>
+                <td>
+                    {#                    {{ orden_servicio.estadoOrden | join(', ') }}#}
+                    {% for estado in orden_servicio.estadoOrden %}
+                        {{ estado }},
+                    {% endfor %}
+                </td>
+                <td>{{ orden_servicio.precio }}</td>
                 <td>
                     <a href="{{ path('orden_servicio_show', {'id': orden_servicio.id}) }}">show</a>
                     <a href="{{ path('orden_servicio_edit', {'id': orden_servicio.id}) }}">edit</a>
