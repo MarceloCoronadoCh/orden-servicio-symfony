@@ -11,7 +11,7 @@ class EquipoMarca
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private ?int $id;
 
     #[ORM\Column(type: 'string', length: 50)]
     private $nombreMarca;
@@ -51,6 +51,6 @@ class EquipoMarca
     public function __toString(): string{
 
         return $this ->getNombreMarca();
-         
+
     }
 } 

@@ -23,11 +23,6 @@ class DetalleOrden
     #[ORM\JoinColumn(nullable: false)]
     private $tipoServicioDetalleOrden;
 
-    #[ORM\Column(type: 'datetime')]
-    private $fechaIngreso;
-
-    #[ORM\Column(type: 'datetime')]
-    private $fechaEntrega;
 
     #[ORM\Column(type: 'text', nullable: true)]
     private $observacion;
@@ -73,18 +68,6 @@ class DetalleOrden
         return $this;
     }
 
-    public function getFechaIngreso(): ?\DateTimeInterface
-    {
-        return $this->fechaIngreso;
-    }
-
-    public function setFechaIngreso(\DateTimeInterface $fechaIngreso): self
-    {
-        $this->fechaIngreso = $fechaIngreso;
-
-        return $this;
-    }
-
     public function getFechaEntrega(): ?\DateTimeInterface
     {
         return $this->fechaEntrega;
@@ -119,6 +102,11 @@ class DetalleOrden
         $this->ordenServicio = $ordenServicio;
 
         return $this;
+    }
+
+    public function __toString(): string{
+
+        return $this ->getOrdenServicio();
     }
 
     /**

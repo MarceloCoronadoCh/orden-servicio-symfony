@@ -112,5 +112,10 @@ class Cliente
 
         return $this ->getNombre().' '.$this ->getApellido();
     }
+
+    public function rucNombreApellidos():string{
+
+        return $this ->getRuc().'-'.$this ->getNombre().' '.$this ->getApellido();
+    }
 }
  

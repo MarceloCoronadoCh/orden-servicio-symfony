@@ -16,7 +16,6 @@ class TecnicoEncargadoType extends AbstractType
             ->add('apellido')
             ->add('dni')
             ->add('direccion')
-            ->add('codigo')
         ;
     }
 

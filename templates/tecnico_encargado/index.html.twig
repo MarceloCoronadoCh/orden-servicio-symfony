@@ -13,7 +13,6 @@
                 <th>Apellido</th>
                 <th>Dni</th>
                 <th>Direccion</th>
-                <th>Codigo</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -25,7 +24,6 @@
                 <td>{{ tecnico_encargado.apellido }}</td>
                 <td>{{ tecnico_encargado.dni }}</td>
                 <td>{{ tecnico_encargado.direccion }}</td>
-                <td>{{ tecnico_encargado.codigo }}</td>
                 <td>
                     <a href="{{ path('tecnico_encargado_show', {'id': tecnico_encargado.id}) }}">show</a>
                     <a href="{{ path('tecnico_encargado_edit', {'id': tecnico_encargado.id}) }}">edit</a>

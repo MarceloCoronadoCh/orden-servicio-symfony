@@ -12,8 +12,7 @@ class DetalleOrdenType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('fechaIngreso')
-            ->add('fechaEntrega')
+            
             ->add('observacion')
             ->add('equipoDetalleOrden')
             ->add('tipoServicioDetalleOrden')

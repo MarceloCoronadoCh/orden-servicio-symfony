@@ -19,21 +19,25 @@ class OrdenServicio
     #[ORM\JoinColumn(nullable: false)]
     private $cliente;
 
+    #[ORM\Column(type: 'datetime')]
+    private $fechaOrden;
+
     #[ORM\ManyToOne(targetEntity: TecnicoEncargado::class)]
     #[ORM\JoinColumn(nullable: false)]
     private $tecnicoEncargado;
 
-    #[ORM\Column(type: 'datetime')]
-    private $fechaOrden;
 
     #[ORM\Column(type: 'string', length: 50)]
     private $numeroOrden;
 
-    #[ORM\OneToMany(mappedBy: 'ordenServicio', targetEntity: DetalleOrden::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'ordenServicio', targetEntity: DetalleOrden::class, cascade: ['persist','remove'],  orphanRemoval: true)]
     private $ordenServicio;
+
+
 
     public function __construct()
     {
+        
         $this->ordenServicio = new ArrayCollection();
     }
 
@@ -66,17 +70,6 @@ class OrdenServicio
         return $this;
     }
 
-    public function getFechaOrden(): ?\DateTimeInterface
-    {
-        return $this->fechaOrden;
-    }
-
-    public function setFechaOrden(\DateTimeInterface $fechaOrden): self
-    {
-        $this->fechaOrden = $fechaOrden;
-
-        return $this;
-    }
 
     public function getNumeroOrden(): ?string
     {
@@ -89,6 +82,7 @@ class OrdenServicio
 
         return $this;
     }
+
 
     /**
      * @return Collection|DetalleOrden[]
@@ -116,6 +110,18 @@ class OrdenServicio
                 $ordenServicio->setOrdenServicio(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFechaOrden(): ?\DateTimeInterface
+    {
+        return $this->fechaOrden;
+    }
+
+    public function setFechaOrden(\DateTimeInterface $fechaOrden): self
+    {
+        $this->fechaOrden = $fechaOrden;
 
         return $this;
     }

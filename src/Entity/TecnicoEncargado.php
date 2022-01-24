@@ -25,9 +25,6 @@ class TecnicoEncargado
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private $direccion;
 
-    #[ORM\Column(type: 'string', length: 10)]
-    private $codigo;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -77,18 +74,6 @@ class TecnicoEncargado
     public function setDireccion(?string $direccion): self
     {
         $this->direccion = $direccion;
-
-        return $this;
-    }
-
-    public function getCodigo(): ?string
-    {
-        return $this->codigo;
-    }
-
-    public function setCodigo(string $codigo): self
-    {
-        $this->codigo = $codigo;
 
         return $this;
     }

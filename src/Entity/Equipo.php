@@ -26,6 +26,7 @@ class Equipo
     #[ORM\JoinColumn(nullable: false)]
     private $marca;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -67,6 +68,12 @@ class Equipo
         return $this;
     }
 
+    public function __toString(): string{
+
+        return $this ->getNombreEquipo(); 
+         
+    }
+
     public function getMarca(): ?EquipoMarca
     {
         return $this->marca;
@@ -77,11 +84,5 @@ class Equipo
         $this->marca = $marca;
 
         return $this;
-    }
-
-    public function __toString(): string{
-
-        return $this ->getNombreEquipo(); 
-         
     }
 }
