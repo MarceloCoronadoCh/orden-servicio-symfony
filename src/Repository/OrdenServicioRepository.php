@@ -19,6 +19,20 @@ class OrdenServicioRepository extends ServiceEntityRepository
         parent::__construct($registry, OrdenServicio::class);
     }
 
+    public function valuesGroupingCliente():array
+    {
+        return $this ->createQueryBuilder('ordenServicio')
+            ->select('clienteOrden.nombre as clienteNombre')
+            ->select('clienteOrden.apellidos as clienteApellidos')
+            ->add('SUM(ordenServicio.precio) as totalPrecio')
+            ->join('ordenServicio.clienteOrden', 'clienteOrden')
+//            ->join('ordenServicio.tecnicoOrden', 'tecnicoOrden')
+            ->groupBy('clienteOrden.id')
+            ->orderBy('clienteOrden.apellidos', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return OrdenServicio[] Returns an array of OrdenServicio objects
     //  */
