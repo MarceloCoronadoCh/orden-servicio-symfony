@@ -17,23 +17,7 @@ class OrdenServicioType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-//        $builder
-//            ->add('numeroOrden')
-//            ->add('fechaOrden', DateType::class,[
-//                'widget'=> 'single_text'
-//            ])
-//            ->add('cliente')
-//            ->add('tecnicoEncargado')
-//            ->add('ordenServicio', CollectionType::class,[
-//                'entry_type'=> DetalleOrdenType::class,
-//                'entry_options' =>['label'=>false,
-//                'allow_add' => true,
-//                'allow_delete' =>true,
-//                'by_reference' =>false]
-//
-//            ])
-//
-//        ;
+
         $builder
             ->add('fechaIngreso', DateType::class, [
                 'widget' => 'single_text',
