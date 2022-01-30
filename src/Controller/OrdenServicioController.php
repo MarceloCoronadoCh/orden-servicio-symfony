@@ -79,12 +79,22 @@ class OrdenServicioController extends AbstractController
         return $this->redirectToRoute('orden_servicio_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/reporte/socio', name: 'orden_servicio_reporte_socio', methods: ['GET'])]
-    public function reporteSocios(OrdenServicioRepository $repository): Response{
+    #[Route('/reporte/cliente', name: 'orden_servicio_reporte_socio', methods: ['GET'])]
+    public function reporteClientes(OrdenServicioRepository $repository): Response{
 
-        $precioCliente = $repository->valuesGroupingCliente();
+        $precioClientes = $repository->valuesGroupingCliente();
         return $this->render('orden_servicio/reporte_socio.html.twig',[
-            'clientes' => $precioCliente
+            'clientes' => $precioClientes
+        ]);
+
+    }
+
+    #[Route('/reporte/tecnico', name: 'orden_servicio_reporte_tecnico', methods: ['GET'])]
+    public function reporteTecnicos(OrdenServicioRepository $repository): Response{
+
+        $precioTecnicos = $repository->valuesGroupingCliente();
+        return $this->render('orden_servicio/reporte_tecnico.html.twig',[
+            'tecnicos' => $precioTecnicos
         ]);
 
     }

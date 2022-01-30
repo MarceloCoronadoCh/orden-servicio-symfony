@@ -24,11 +24,23 @@ class OrdenServicioRepository extends ServiceEntityRepository
         return $this ->createQueryBuilder('ordenServicio')
             ->select('clienteOrden.nombre as clienteNombre')
             ->select('clienteOrden.apellidos as clienteApellidos')
-            ->add('SUM(ordenServicio.precio) as totalPrecio')
+            ->addSelect('SUM(ordenServicio.precio) as totalPrecio')
             ->join('ordenServicio.clienteOrden', 'clienteOrden')
-//            ->join('ordenServicio.tecnicoOrden', 'tecnicoOrden')
             ->groupBy('clienteOrden.id')
             ->orderBy('clienteOrden.apellidos', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function valuesGroupingTecnico():array
+    {
+        return $this ->createQueryBuilder('ordenServicio')
+            ->select('tecnicoOrden.nombreTecnico as tecnicoNombre')
+            ->addselect(' tecnicoOrden.apellidosTecnico as tecnicoApellidos')
+            ->addSelect('SUM(ordenServicio.precio) as totalPrecio')
+            ->join('ordenServicio.tecnicoOrden', 'tecnicoOrden')
+            ->groupBy('tecnicoOrden.id')
+            ->orderBy('tecnicoOrden.apellidosTecnico', 'DESC')
             ->getQuery()
             ->getResult();
     }

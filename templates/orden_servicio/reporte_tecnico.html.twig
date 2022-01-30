@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reporte de tecnicos{% endblock %}
+
+{% block body %}
+    <h1>Reporte de Tecnicos</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Tecnico</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tecnico in tecnicos %}
+            <tr>
+                <td>{{ tecnico.tecnicoNombre }} {{ tecnico.tecnicoApellidos }}</td>
+                <td>{{ tecnico.totalPrecio }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        jQuery(document).ready(function (){
+            window.print()
+        })
+    </script>
+{% endblock %}
